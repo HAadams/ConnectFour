@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     }
 
     func setupPlayers(){        
-        human = Player(image: "YellowToken", name: "Human", playerID: GridEnum.PlayerOne.rawValue)
+        human = Player(image: "YellowToken", name: "You", playerID: GridEnum.PlayerOne.rawValue)
         human!.delegate = self
         phone = Player(image: "RedToken", name: "Phone", playerID: GridEnum.PlayerTwo.rawValue)
         phone!.delegate = self
@@ -59,7 +59,7 @@ class ViewController: UIViewController {
     func setupGridView() {
         imageViewGrid = GridImageView(frame: CGRect(origin: gridView.bounds.origin, size: gridView.bounds.size))
         imageViewGrid!.image = #imageLiteral(resourceName: "Grid")
-        imageViewGrid!.initGrid(columns: gridModel!.columns, rows: gridModel!.rows)
+        imageViewGrid!.initGrid(columns: gridColumns, rows: gridRows)
 
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(gridTapped))
         imageViewGrid!.addGestureRecognizer(recognizer)
@@ -70,9 +70,11 @@ class ViewController: UIViewController {
 
     @objc func gridTapped(recognizer: UIGestureRecognizer){
         guard !stopGame else {return}
+        // listen for user taps on the grid and translate that to locaion (row, column) on the grid then place token if conditions are met
 
         if let grid = recognizer.view as? GridImageView {
             if let gridPosition = imageViewGrid?.getGridPositionFromPoint(point: recognizer.location(in: grid)){
+                // gridPosition.1 is the column where user tapped
                 play(at: gridPosition.1)
             }
         }
@@ -80,7 +82,7 @@ class ViewController: UIViewController {
     
     func play(at column: Int) {
         // Function used to start a *play* and then swap turns
-        // column parameter can be any value if player.isBot is True
+        // column parameter can be any value if player.isBot == true
 
         if human!.turn && !phone!.turn && column >= 0 && column < gridModel!.columns{
             human!.turnToPlay(at: column)
@@ -89,6 +91,8 @@ class ViewController: UIViewController {
         if !human!.turn && phone!.turn {
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) {timer in
                 self.phone!.turnToPlay(at: -1)
+                
+                // TODO: Should we wait here for token to finish animation before allowing second player to play?
                 self.human!.turn = !(self.phone!.turn)
                 timer.invalidate()
             }
@@ -123,7 +127,7 @@ extension ViewController: GridDelegate, PlayerDelegate {
     func playerTurnToPlay(at column: Int, player: inout Player) -> Bool {
         var tokenColumn = column
         if player.isBot {
-            tokenColumn = gridModel!.getRandomNonEmptyColumn()
+            tokenColumn = gridModel!.getRandomNonFullColumn()
         }
         if !stopGame && addTokenToGridModel(at: tokenColumn, for: &player){
             return true

@@ -75,15 +75,14 @@ struct GridController {
         columnSizes[column] += 1
         gridSize += 1
         self.delegate?.valueAddedToGrid(row: rowIndex, column: column, player: &player)
-        self.checkPattern(for: &player)
-        if isGridFull() {
+        // Edge case: Should not return tie if grid is full and last token forms a pattern
+        if !self.checkPattern(for: &player) && isGridFull(){
             delegate?.gridIsFull()
-            return false
         }
         return true
     }
     
-    func getRandomNonEmptyColumn() -> Int{
+    func getRandomNonFullColumn() -> Int{
         var randomGridColumn = Int.random(in: 0 ..< columns)
         while isColumnFull(column: randomGridColumn){
             randomGridColumn = Int.random(in: 0 ..< columns)
@@ -91,30 +90,36 @@ struct GridController {
         return randomGridColumn
     }
     
-    func checkPattern(for player: inout Player){
+    func checkPattern(for player: inout Player) -> Bool{
+        // This method checks if a pattern formed (four consecutive connected tokens)
+        // horizontally, vertically and diagnoally and calls a function to notify the view controller
+        
+        // TODO: Can be optimized to O(K) instead of O(rows*columns) where K = patternCount (i.e. number of connected tokens to win)
         let pattern: Int = player.playerID
         for row in 0..<rows {
             for column in 0..<columns {
                 if grid[row][column] == pattern {
                     if let data = checkRightPattern(row: row, column: column, pattern: pattern) {
                         delegate?.foundMatchingPattern(for: &player, pattern: data)
-                        return
+                        return true
                     }else if let data = checkDownPattern(row: row, column: column, pattern: pattern) {
                         delegate?.foundMatchingPattern(for: &player, pattern: data)
-                        return
+                        return true
                     }else if let data = checkDiagPattern(row: row, column: column, pattern: pattern, direction: 1) {
                         delegate?.foundMatchingPattern(for: &player, pattern: data)
-                        return
+                        return true
                     }else if let data = checkDiagPattern(row: row, column: column, pattern: pattern, direction: -1) {
                         delegate?.foundMatchingPattern(for: &player, pattern: data)
-                        return
+                        return true
                     }
                 }
             }
         }
+        return false
     }
         
     private func checkDiagPattern(row:Int, column:Int, pattern: Int, direction: Int) -> [(Int, Int)]? {
+        // Helper method to check for pattern in the diagnoal direction
         var data: [(Int, Int)] = []
         var j = column
         for i in row..<grid.count {
@@ -136,6 +141,7 @@ struct GridController {
     }
     
     private func checkDownPattern(row:Int, column:Int, pattern: Int) -> [(Int, Int)]? {
+        // helper function to check for pattern in the vertical dirction
         var data: [(Int, Int)] = []
         for i in row..<grid.count {
             if grid[i][column] == pattern {
@@ -150,7 +156,9 @@ struct GridController {
         
         return nil
     }
+    
     private func checkRightPattern(row:Int, column:Int, pattern: Int) -> [(Int, Int)]? {
+        // helper function to check if there is a pattern in the horizontal direction
         var data: [(Int, Int)] = []
         for i in column..<grid[0].count {
             if grid[row][i] == pattern {
