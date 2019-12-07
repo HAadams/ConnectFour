@@ -32,8 +32,8 @@ class ViewController: UIViewController {
     override func viewDidLoad() {
         super.viewDidLoad()
         setupGridController()
-        setupPlayers()
         setupGridView()
+        setupPlayers()
     }
     
     func setupGridController(){
@@ -48,8 +48,12 @@ class ViewController: UIViewController {
         phone!.delegate = self
         
         phone!.isBot = true
-        human!.turn = true
+        
         phone!.turn = false
+        human!.turn = true
+        
+        // Start a play at a random position if its phone's turn
+        play(at: -1)
     }
 
     func setupGridView() {
@@ -69,30 +73,27 @@ class ViewController: UIViewController {
 
         if let grid = recognizer.view as? GridImageView {
             if let gridPosition = imageViewGrid?.getGridPositionFromPoint(point: recognizer.location(in: grid)){
-                
-                
-                if human!.turn && !phone!.turn{
-                    human!.turnToPlay(at: gridPosition.1)
-                    phone!.turn = !(human!.turn)
-                    print(human!.turn, phone!.turn)
-                }
-                
-                if !human!.turn && phone!.turn {
-                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) {timer in
-                        self.phone!.turnToPlay(at: -1)
-                        self.human!.turn = !(self.phone!.turn)
-                        timer.invalidate()
-                    }
-                }
-
+                play(at: gridPosition.1)
             }
         }
     }
     
-    func swapTurns(player1: inout Player, player2: inout Player) {
-        let turn1 = player1.turn
-        player1.turn = player2.turn
-        player2.turn = turn1
+    func play(at column: Int) {
+        // Function used to start a *play* and then swap turns
+        // column parameter can be any value if player.isBot is True
+
+        if human!.turn && !phone!.turn && column >= 0 && column < gridModel!.columns{
+            human!.turnToPlay(at: column)
+            phone!.turn = !(human!.turn)
+        }
+        if !human!.turn && phone!.turn {
+            Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) {timer in
+                self.phone!.turnToPlay(at: -1)
+                self.human!.turn = !(self.phone!.turn)
+                timer.invalidate()
+            }
+        }
+
     }
     
     func addTokenToGridModel(at column: Int, for player: inout Player) -> Bool{

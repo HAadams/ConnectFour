@@ -17,7 +17,7 @@ struct Player {
     
     var isBot: Bool = false
     var name: String?
-    var turn: Bool = true
+    var turn: Bool = false
     var score: Int = 0
     var image: String?
     var delegate: PlayerDelegate?
@@ -32,7 +32,6 @@ struct Player {
     
     mutating func turnToPlay(at column: Int){
         if let played = delegate?.playerTurnToPlay(at: column, player: &self) {
-            print(played)
             if played {
                 turn = false
             }

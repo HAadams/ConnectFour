@@ -19,7 +19,7 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		68C4A09E239B81810060E10C /* ConnectFour-iOS13.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "ConnectFour-iOS13.app"; sourceTree = BUILT_PRODUCTS_DIR; };
+		68C4A09E239B81810060E10C /* ConnectFour.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = ConnectFour.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		68C4A0A1239B81810060E10C /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		68C4A0A3239B81810060E10C /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
 		68C4A0A5239B81810060E10C /* ViewController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ViewController.swift; sourceTree = "<group>"; };
@@ -54,7 +54,7 @@
 		68C4A09F239B81810060E10C /* Products */ = {
 			isa = PBXGroup;
 			children = (
-				68C4A09E239B81810060E10C /* ConnectFour-iOS13.app */,
+				68C4A09E239B81810060E10C /* ConnectFour.app */,
 			);
 			name = Products;
 			sourceTree = "<group>";
@@ -125,7 +125,7 @@
 			);
 			name = "ConnectFour-iOS13";
 			productName = "ConnectFour-iOS13";
-			productReference = 68C4A09E239B81810060E10C /* ConnectFour-iOS13.app */;
+			productReference = 68C4A09E239B81810060E10C /* ConnectFour.app */;
 			productType = "com.apple.product-type.application";
 		};
 /* End PBXNativeTarget section */
@@ -335,7 +335,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "adams.a.hussein.ConnectFour-iOS13";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ConnectFour;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
@@ -352,7 +352,7 @@
 					"@executable_path/Frameworks",
 				);
 				PRODUCT_BUNDLE_IDENTIFIER = "adams.a.hussein.ConnectFour-iOS13";
-				PRODUCT_NAME = "$(TARGET_NAME)";
+				PRODUCT_NAME = ConnectFour;
 				SWIFT_VERSION = 5.0;
 				TARGETED_DEVICE_FAMILY = "1,2";
 			};
