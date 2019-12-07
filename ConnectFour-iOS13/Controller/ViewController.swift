@@ -44,7 +44,7 @@ class ViewController: UIViewController {
     func setupGridView() {
         imageViewGrid = GridImageView(frame: CGRect(origin: gridView.bounds.origin, size: gridView.bounds.size))
         imageViewGrid!.image = #imageLiteral(resourceName: "Grid")
-        imageViewGrid!.initGrid(columns: gridModel!.rows, rows: gridModel!.columns)
+        imageViewGrid!.initGrid(columns: gridModel!.columns, rows: gridModel!.rows)
 
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(gridTapped))
         imageViewGrid!.addGestureRecognizer(recognizer)
@@ -58,6 +58,8 @@ class ViewController: UIViewController {
             if let gridPosition = imageViewGrid?.getGridPositionFromPoint(point: recognizer.location(in: grid)){
                 let row = gridPosition.0
                 let column = gridPosition.1
+                addTokenToGridModel(at: column, for: &human!)
+                print(row, column)
                 // Token drop down animation start position at first row
                 var startPoint = imageViewGrid!.getPointFromRowColumn(row: 0, column: column)
                 // Get row and column of where this token should be placed after animation
@@ -85,7 +87,10 @@ class ViewController: UIViewController {
         }
     }
     
-    
+    func addTokenToGridModel(at column: Int, for player: inout Player) -> Bool{
+        return gridModel!.addToken(to:column, with:&player)
+    }
+
     @IBAction func newGameButtonPressed(_ sender: UIButton) {
     }
     
