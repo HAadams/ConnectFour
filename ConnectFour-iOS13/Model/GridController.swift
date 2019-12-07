@@ -23,10 +23,10 @@ protocol GridDelegate {
 struct GridController {
     var columns: Int = 0
     var rows: Int = 0
-    var grid: [[Int]] = []
-    var columnSizes: [Int] = []
-    var gridSize: Int = 0
-    var patternCount: Int = 0
+    var grid: [[Int]] = []      // 2D array of Ints to keep track of current play
+    var columnSizes: [Int] = [] // keeps track of how many elemts in each column
+    var gridSize: Int = 0   // Number of elements in the grid
+    var patternCount: Int = 0  // Number of tokens matching in a row to win
     var delegate: GridDelegate?
     
     init(columns: Int, rows: Int, patternCount: Int) {
@@ -165,5 +165,6 @@ struct GridController {
         
         return nil
     }
+
         
 }

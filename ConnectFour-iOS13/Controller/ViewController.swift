@@ -42,7 +42,7 @@ class ViewController: UIViewController {
     }
 
     func setupPlayers(){        
-        human = Player(image: "YellowToken", name: "You", playerID: GridEnum.PlayerOne.rawValue)
+        human = Player(image: "YellowToken", name: "Human", playerID: GridEnum.PlayerOne.rawValue)
         human!.delegate = self
         phone = Player(image: "RedToken", name: "Phone", playerID: GridEnum.PlayerTwo.rawValue)
         phone!.delegate = self
