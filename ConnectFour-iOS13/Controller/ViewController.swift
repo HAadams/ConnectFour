@@ -41,15 +41,12 @@ class ViewController: UIViewController {
         gridModel!.delegate = self
     }
 
-    func setupPlayers(){
-        let yellowToken = GridToken(value: GridEnum.PlayerOne.rawValue, token: UIImage(named: "YellowToken"))
-        let redToken = GridToken(value: GridEnum.PlayerTwo.rawValue, token: UIImage(named: "RedToken"))
-        
-        human = Player(token: yellowToken, name: "You")
+    func setupPlayers(){        
+        human = Player(image: "YellowToken", name: "You", playerID: GridEnum.PlayerOne.rawValue)
         human!.delegate = self
-        
-        phone = Player(token: redToken, name: "Phone")
+        phone = Player(image: "RedToken", name: "Phone", playerID: GridEnum.PlayerTwo.rawValue)
         phone!.delegate = self
+        
         phone!.isBot = true
         human!.turn = true
         phone!.turn = false
@@ -137,30 +134,9 @@ extension ViewController: GridDelegate, PlayerDelegate {
     }
     
     func valueAddedToGrid(row: Int, column: Int, player: inout Player){
-        // Token drop down animation start position at first row of chosen column
-        var startPoint = imageViewGrid!.getPointFromRowColumn(row: 0, column: column)
-        // Get row and column of where this token should be placed after animation
-        let endPoint = imageViewGrid!.getPointFromRowColumn(row: row, column: column)
-
-        // Token should start its animation above the grid
-        startPoint.y -= 100
-        let tokenView = UIImageView(frame: CGRect(origin: startPoint, size: (player.token?.dimensions)!))
-        tokenView.image = player.token?.token
-        // Place the token in the GridView and display it
-        imageViewGrid!.addSubview(tokenView)
-
-        imageViewGrid!.addView(row: row, column: column, view: tokenView)
-        // Start animation to move token down
-        var counter = 1
-        let loopUntil = Int(endPoint.y) - Int(startPoint.y)
-        Timer.scheduledTimer(withTimeInterval: tokenMoveSpeed, repeats: true) {timer in
-            tokenView.frame.origin.y = CGFloat(CGFloat(counter)+CGFloat(startPoint.y))
-            if counter == loopUntil {
-                timer.invalidate()
-            }
-            counter += 1
-        }
-
+        let tokenView = UIImageView(frame: CGRect(origin: CGPoint(x:0, y:0), size: CGSize(width: CGFloat(0), height: CGFloat(0))))
+        tokenView.image = UIImage(named: player.image!)
+        self.imageViewGrid!.moveViewTo(row: row, column: column, view: tokenView)
     }
     
     func foundMatchingPattern(for player: inout Player, pattern locations: [(Int, Int)]) {

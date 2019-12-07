@@ -18,13 +18,15 @@ struct Player {
     var name: String?
     var turn: Bool = true
     var score: Int = 0
-    var token: GridToken?
+    var image: String?
     var delegate: PlayerDelegate?
+    var playerID: Int = 0
+
     
-    
-    init(token: GridToken, name: String){
-        self.token = token
+    init(image: String, name: String, playerID: Int){
+        self.image = image
         self.name = name
+        self.playerID = playerID
     }
     
     mutating func increaseScore(){

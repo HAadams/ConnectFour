@@ -14,12 +14,6 @@ enum GridEnum: Int {
     case PlayerTwo = 1
 }
 
-struct GridToken {
-    var value: Int?
-    var token: UIImage?
-    let dimensions: CGSize = CGSize(width:30.0, height:30.0)
-}
-
 protocol GridDelegate {
     func valueAddedToGrid(row: Int, column: Int, player: inout Player)
     func foundMatchingPattern(for player: inout Player, pattern locations: [(Int, Int)])
@@ -38,8 +32,7 @@ struct GridController {
     init(columns: Int, rows: Int, patternCount: Int) {
         self.columns = columns
         self.rows = rows
-        self.patternCount = patternCount
-        
+        self.patternCount = patternCount        
         initGrid()
     }
     
@@ -76,10 +69,9 @@ struct GridController {
     }
     
     mutating func addToken(to column: Int, with player: inout Player) -> Bool{
-        guard let value = player.token?.value else {return false}
         guard !isColumnFull(column: column) else {return false}
         let rowIndex = rows - columnSizes[column] - 1
-        grid[rowIndex][column] = value
+        grid[rowIndex][column] = player.playerID
         columnSizes[column] += 1
         gridSize += 1
         self.delegate?.valueAddedToGrid(row: rowIndex, column: column, player: &player)
@@ -100,10 +92,10 @@ struct GridController {
     }
     
     func checkPattern(for player: inout Player){
-        let pattern: Int = (player.token?.value)!
+        let pattern: Int = player.playerID
         for row in 0..<rows {
             for column in 0..<columns {
-                if grid[row][column] == player.token?.value {
+                if grid[row][column] == pattern {
                     if let data = checkRightPattern(row: row, column: column, pattern: pattern) {
                         delegate?.foundMatchingPattern(for: &player, pattern: data)
                         return

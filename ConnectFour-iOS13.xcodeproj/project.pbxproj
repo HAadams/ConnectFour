@@ -85,7 +85,7 @@
 		68C4A0BA239B8F440060E10C /* View */ = {
 			isa = PBXGroup;
 			children = (
-				68C4A0B5239B8ADC0060E10C /* UIGridImageView.swift */,
+				68C4A0BE239C1E8D0060E10C /* GridViews */,
 				68C4A0AC239B81810060E10C /* LaunchScreen.storyboard */,
 				68C4A0A7239B81810060E10C /* Main.storyboard */,
 			);
@@ -98,6 +98,14 @@
 				68C4A0A5239B81810060E10C /* ViewController.swift */,
 			);
 			path = Controller;
+			sourceTree = "<group>";
+		};
+		68C4A0BE239C1E8D0060E10C /* GridViews */ = {
+			isa = PBXGroup;
+			children = (
+				68C4A0B5239B8ADC0060E10C /* UIGridImageView.swift */,
+			);
+			path = GridViews;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
