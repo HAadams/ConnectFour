@@ -55,4 +55,14 @@ class GridImageView: UIImageView {
         return CGPoint(x:x, y:y)
     }
 
+    func clearViews() {
+        self.subviews.forEach({$0.removeFromSuperview()})
+        childViews.removeAll()
+        initGrid(columns: columns, rows: rows)
+    }
+
+    func addView(row: Int, column: Int, view: UIImageView) {
+        childViews[row][column] = view
+    }
+
 }

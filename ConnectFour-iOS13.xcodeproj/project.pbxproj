@@ -14,6 +14,8 @@
 		68C4A0AB239B81810060E10C /* Assets.xcassets in Resources */ = {isa = PBXBuildFile; fileRef = 68C4A0AA239B81810060E10C /* Assets.xcassets */; };
 		68C4A0AE239B81810060E10C /* LaunchScreen.storyboard in Resources */ = {isa = PBXBuildFile; fileRef = 68C4A0AC239B81810060E10C /* LaunchScreen.storyboard */; };
 		68C4A0B6239B8ADC0060E10C /* UIGridImageView.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A0B5239B8ADC0060E10C /* UIGridImageView.swift */; };
+		68C4A0B8239B8F0F0060E10C /* GridController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A0B7239B8F0F0060E10C /* GridController.swift */; };
+		68C4A0BD239B90260060E10C /* Player.swift in Sources */ = {isa = PBXBuildFile; fileRef = 68C4A0BC239B90260060E10C /* Player.swift */; };
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
@@ -26,6 +28,8 @@
 		68C4A0AD239B81810060E10C /* Base */ = {isa = PBXFileReference; lastKnownFileType = file.storyboard; name = Base; path = Base.lproj/LaunchScreen.storyboard; sourceTree = "<group>"; };
 		68C4A0AF239B81810060E10C /* Info.plist */ = {isa = PBXFileReference; lastKnownFileType = text.plist.xml; path = Info.plist; sourceTree = "<group>"; };
 		68C4A0B5239B8ADC0060E10C /* UIGridImageView.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = UIGridImageView.swift; sourceTree = "<group>"; };
+		68C4A0B7239B8F0F0060E10C /* GridController.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = GridController.swift; sourceTree = "<group>"; };
+		68C4A0BC239B90260060E10C /* Player.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = Player.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
 /* Begin PBXFrameworksBuildPhase section */
@@ -58,16 +62,42 @@
 		68C4A0A0239B81810060E10C /* ConnectFour-iOS13 */ = {
 			isa = PBXGroup;
 			children = (
+				68C4A0B9239B8F3D0060E10C /* Model */,
+				68C4A0BA239B8F440060E10C /* View */,
+				68C4A0BB239B8F490060E10C /* Controller */,
 				68C4A0A1239B81810060E10C /* AppDelegate.swift */,
 				68C4A0A3239B81810060E10C /* SceneDelegate.swift */,
-				68C4A0A5239B81810060E10C /* ViewController.swift */,
-				68C4A0A7239B81810060E10C /* Main.storyboard */,
 				68C4A0AA239B81810060E10C /* Assets.xcassets */,
-				68C4A0AC239B81810060E10C /* LaunchScreen.storyboard */,
 				68C4A0AF239B81810060E10C /* Info.plist */,
-				68C4A0B5239B8ADC0060E10C /* UIGridImageView.swift */,
 			);
 			path = "ConnectFour-iOS13";
+			sourceTree = "<group>";
+		};
+		68C4A0B9239B8F3D0060E10C /* Model */ = {
+			isa = PBXGroup;
+			children = (
+				68C4A0B7239B8F0F0060E10C /* GridController.swift */,
+				68C4A0BC239B90260060E10C /* Player.swift */,
+			);
+			path = Model;
+			sourceTree = "<group>";
+		};
+		68C4A0BA239B8F440060E10C /* View */ = {
+			isa = PBXGroup;
+			children = (
+				68C4A0B5239B8ADC0060E10C /* UIGridImageView.swift */,
+				68C4A0AC239B81810060E10C /* LaunchScreen.storyboard */,
+				68C4A0A7239B81810060E10C /* Main.storyboard */,
+			);
+			path = View;
+			sourceTree = "<group>";
+		};
+		68C4A0BB239B8F490060E10C /* Controller */ = {
+			isa = PBXGroup;
+			children = (
+				68C4A0A5239B81810060E10C /* ViewController.swift */,
+			);
+			path = Controller;
 			sourceTree = "<group>";
 		};
 /* End PBXGroup section */
@@ -144,6 +174,8 @@
 				68C4A0A6239B81810060E10C /* ViewController.swift in Sources */,
 				68C4A0A2239B81810060E10C /* AppDelegate.swift in Sources */,
 				68C4A0B6239B8ADC0060E10C /* UIGridImageView.swift in Sources */,
+				68C4A0B8239B8F0F0060E10C /* GridController.swift in Sources */,
+				68C4A0BD239B90260060E10C /* Player.swift in Sources */,
 				68C4A0A4239B81810060E10C /* SceneDelegate.swift in Sources */,
 			);
 			runOnlyForDeploymentPostprocessing = 0;
