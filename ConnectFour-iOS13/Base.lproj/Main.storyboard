@@ -76,7 +76,7 @@
                                 </constraints>
                             </stackView>
                         </subviews>
-                        <color key="backgroundColor" systemColor="systemBackgroundColor" cocoaTouchSystemColor="whiteColor"/>
+                        <color key="backgroundColor" red="0.13333333333333333" green="0.15686274509803921" blue="0.19215686274509802" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                         <constraints>
                             <constraint firstItem="zJ7-Z9-1PN" firstAttribute="top" secondItem="6Tk-OE-BBY" secondAttribute="top" id="2Dm-MT-2fe"/>
                             <constraint firstItem="zJ7-Z9-1PN" firstAttribute="leading" secondItem="6Tk-OE-BBY" secondAttribute="leading" id="ZTS-cb-mkb"/>
