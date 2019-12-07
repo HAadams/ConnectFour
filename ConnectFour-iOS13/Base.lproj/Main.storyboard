@@ -31,7 +31,7 @@
                                                 <rect key="frame" x="0.0" y="39.5" width="394" height="40"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="56y-gJ-CNG" userLabel="yellow">
-                                                        <rect key="frame" x="0.0" y="0.0" width="134" height="40"/>
+                                                        <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="YellowToken" translatesAutoresizingMaskIntoConstraints="NO" id="adE-lc-xWW" userLabel="YellowToken">
                                                                 <rect key="frame" x="0.0" y="0.0" width="30" height="40"/>
@@ -40,12 +40,12 @@
                                                                 </constraints>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="You" translatesAutoresizingMaskIntoConstraints="NO" id="npt-ZB-wk7" userLabel="YouImage">
-                                                                <rect key="frame" x="30" y="0.0" width="104" height="40"/>
+                                                                <rect key="frame" x="30" y="0.0" width="100" height="40"/>
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
                                                     <stackView opaque="NO" contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="qNQ-PA-eX4" userLabel="vs">
-                                                        <rect key="frame" x="154" y="0.0" width="50" height="40"/>
+                                                        <rect key="frame" x="150" y="0.0" width="50" height="40"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="VS " translatesAutoresizingMaskIntoConstraints="NO" id="jtJ-zb-1NM" userLabel="VS">
                                                                 <rect key="frame" x="0.0" y="0.0" width="50" height="40"/>
@@ -56,18 +56,17 @@
                                                             </imageView>
                                                         </subviews>
                                                     </stackView>
-                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="10" translatesAutoresizingMaskIntoConstraints="NO" id="wHI-8W-hHn" userLabel="red">
-                                                        <rect key="frame" x="224" y="0.0" width="170" height="40"/>
+                                                    <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="5" translatesAutoresizingMaskIntoConstraints="NO" id="wHI-8W-hHn" userLabel="red">
+                                                        <rect key="frame" x="220" y="0.0" width="174" height="40"/>
                                                         <subviews>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="Phone " translatesAutoresizingMaskIntoConstraints="NO" id="mVN-cD-4ww" userLabel="PhoneImage">
-                                                                <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
+                                                                <rect key="frame" x="0.0" y="0.0" width="139" height="40"/>
                                                                 <constraints>
-                                                                    <constraint firstAttribute="width" constant="130" id="b5P-xp-qld"/>
-                                                                    <constraint firstAttribute="height" constant="45" id="e12-TC-n9b"/>
+                                                                    <constraint firstAttribute="width" constant="139" id="b5P-xp-qld"/>
                                                                 </constraints>
                                                             </imageView>
                                                             <imageView clipsSubviews="YES" userInteractionEnabled="NO" contentMode="scaleAspectFit" horizontalHuggingPriority="251" verticalHuggingPriority="251" image="RedToken" translatesAutoresizingMaskIntoConstraints="NO" id="et2-qW-7Sk" userLabel="RedToken">
-                                                                <rect key="frame" x="140" y="0.0" width="30" height="40"/>
+                                                                <rect key="frame" x="144" y="0.0" width="30" height="40"/>
                                                                 <constraints>
                                                                     <constraint firstAttribute="width" constant="30" id="TFg-1z-Jn3"/>
                                                                     <constraint firstAttribute="height" constant="40" id="mH4-Xl-ce9"/>
@@ -104,7 +103,7 @@
                                     </stackView>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="mck-7s-RXm">
                                         <rect key="frame" x="34.5" y="326.5" width="345" height="300"/>
-                                        <color key="backgroundColor" systemColor="systemBlueColor" red="0.0" green="0.47843137250000001" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
+                                        <color key="backgroundColor" red="0.0" green="0.43222525092465752" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="345" id="Zyy-so-edc"/>
                                             <constraint firstAttribute="height" constant="300" id="wMI-he-oXD"/>
@@ -149,6 +148,9 @@
                         </constraints>
                         <viewLayoutGuide key="safeArea" id="6Tk-OE-BBY"/>
                     </view>
+                    <connections>
+                        <outlet property="gridView" destination="mck-7s-RXm" id="Ci0-zt-IBH"/>
+                    </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
             </objects>
