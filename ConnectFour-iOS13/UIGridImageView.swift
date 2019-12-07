@@ -39,4 +39,21 @@ class GridImageView: UIImageView {
         }
     }
     
+    func getGridPositionFromPoint(point: CGPoint) -> (Int, Int){
+        // Assumes point is from the GridView UIImageView
+        let column = Int(floor(point.x/cellWidth))
+        let row = Int(floor(point.y/cellHeight))
+        print(column, row)
+        return (row, column)
+    }
+    
+    func getPointFromRowColumn(row: Int, column: Int) -> CGPoint {
+        
+        // offset correction to put Token views in the middle of the grid cell
+        let offset: CGFloat = 10.0
+        let x:CGFloat = (CGFloat(column) * cellWidth) + offset
+        let y:CGFloat = (CGFloat(row) * cellHeight) + offset
+        print(x, y)
+        return CGPoint(x:x, y:y)
+    }
 }
