@@ -23,10 +23,20 @@ class ViewController: UIViewController {
         imageViewGrid!.image = #imageLiteral(resourceName: "Grid")
         imageViewGrid!.initGrid(columns: 7, rows: 6)
 
+        let recognizer = UITapGestureRecognizer(target: self, action: #selector(gridTapped))
+        imageViewGrid!.addGestureRecognizer(recognizer)
+
         imageViewGrid!.isUserInteractionEnabled = true
         gridView.addSubview(imageViewGrid!)
     }
 
+    @objc func gridTapped(recognizer: UIGestureRecognizer){
+        if let grid = recognizer.view as? GridImageView {
+            if let gridPosition = imageViewGrid?.getGridPositionFromPoint(point: recognizer.location(in: grid)){
+                print(gridPosition.0, gridPosition.1)
+            }
+        }
+    }
 
 }
 

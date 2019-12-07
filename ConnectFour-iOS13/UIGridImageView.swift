@@ -43,7 +43,6 @@ class GridImageView: UIImageView {
         // Assumes point is from the GridView UIImageView
         let column = Int(floor(point.x/cellWidth))
         let row = Int(floor(point.y/cellHeight))
-        print(column, row)
         return (row, column)
     }
     
@@ -53,7 +52,7 @@ class GridImageView: UIImageView {
         let offset: CGFloat = 10.0
         let x:CGFloat = (CGFloat(column) * cellWidth) + offset
         let y:CGFloat = (CGFloat(row) * cellHeight) + offset
-        print(x, y)
         return CGPoint(x:x, y:y)
     }
+
 }
