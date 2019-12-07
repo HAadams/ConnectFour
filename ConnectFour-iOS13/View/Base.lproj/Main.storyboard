@@ -156,6 +156,9 @@
                     </view>
                     <connections>
                         <outlet property="gridView" destination="mck-7s-RXm" id="Ci0-zt-IBH"/>
+                        <outlet property="humanScoreLabel" destination="0U8-TH-24o" id="wEv-6O-PeL"/>
+                        <outlet property="notificationLabel" destination="g0A-Rb-Z8F" id="aWv-wV-7hd"/>
+                        <outlet property="phoneScoreLabel" destination="7be-v6-DR2" id="UOt-4m-vjF"/>
                     </connections>
                 </viewController>
                 <placeholder placeholderIdentifier="IBFirstResponder" id="dkx-z0-nzr" sceneMemberID="firstResponder"/>
