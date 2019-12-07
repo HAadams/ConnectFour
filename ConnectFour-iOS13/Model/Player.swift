@@ -10,6 +10,7 @@ import Foundation
 
 protocol PlayerDelegate {
     func playerScoreChanged(player: Player)
+    func playerTurnToPlay(at column: Int, player: inout Player) -> Bool
 }
 
 struct Player {
@@ -27,6 +28,15 @@ struct Player {
         self.image = image
         self.name = name
         self.playerID = playerID
+    }
+    
+    mutating func turnToPlay(at column: Int){
+        if let played = delegate?.playerTurnToPlay(at: column, player: &self) {
+            print(played)
+            if played {
+                turn = false
+            }
+        }
     }
     
     mutating func increaseScore(){

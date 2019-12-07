@@ -70,21 +70,19 @@ class ViewController: UIViewController {
         if let grid = recognizer.view as? GridImageView {
             if let gridPosition = imageViewGrid?.getGridPositionFromPoint(point: recognizer.location(in: grid)){
                 
-                // Human player tapped grid to play
-                if !stopGame && addTokenToGridModel(at: gridPosition.1, for: &human!) {
-                    swapTurns(player1: &human!, player2: &phone!)
-                }else {
-                    return
+                
+                if human!.turn && !phone!.turn{
+                    human!.turnToPlay(at: gridPosition.1)
+                    phone!.turn = !(human!.turn)
+                    print(human!.turn, phone!.turn)
                 }
                 
-                
-                // Bot should play right after
-                let randomColumn = self.gridModel!.getRandomNonEmptyColumn()
-                Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) {timer in
-                    if !self.stopGame && self.addTokenToGridModel(at: randomColumn, for: &self.phone!){
-                        self.swapTurns(player1: &self.human!, player2: &self.phone!)
+                if !human!.turn && phone!.turn {
+                    Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) {timer in
+                        self.phone!.turnToPlay(at: -1)
+                        self.human!.turn = !(self.phone!.turn)
+                        timer.invalidate()
                     }
-                    timer.invalidate()
                 }
 
             }
@@ -117,11 +115,22 @@ class ViewController: UIViewController {
         stopGame = false
 
     }
-    
 }
 
 
 extension ViewController: GridDelegate, PlayerDelegate {
+    func playerTurnToPlay(at column: Int, player: inout Player) -> Bool {
+        var tokenColumn = column
+        if player.isBot {
+            tokenColumn = gridModel!.getRandomNonEmptyColumn()
+        }
+        if !stopGame && addTokenToGridModel(at: tokenColumn, for: &player){
+            return true
+        }else{
+            return false
+        }
+    }
+    
 
     func playerScoreChanged(player: Player){
         if player.isBot {
