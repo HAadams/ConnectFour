@@ -53,28 +53,31 @@ class ViewController: UIViewController {
         human!.turn = true
         
         // Start a play at a random position if its phone's turn
+        // This line is here to acommodate making it possible for phone to go first
         play(at: -1)
     }
 
     func setupGridView() {
+        // Setup the ImageView to take hte size of its parent UIView
         imageViewGrid = GridImageView(frame: CGRect(origin: gridView.bounds.origin, size: gridView.bounds.size))
         imageViewGrid!.image = #imageLiteral(resourceName: "Grid")
         imageViewGrid!.initGrid(columns: gridColumns, rows: gridRows)
 
+        // If user taps on grid then call the gridTapped function
         let recognizer = UITapGestureRecognizer(target: self, action: #selector(gridTapped))
         imageViewGrid!.addGestureRecognizer(recognizer)
-
         imageViewGrid!.isUserInteractionEnabled = true
+        
         gridView.addSubview(imageViewGrid!)
     }
 
     @objc func gridTapped(recognizer: UIGestureRecognizer){
         guard !stopGame else {return}
-        // listen for user taps on the grid and translate that to locaion (row, column) on the grid then place token if conditions are met
+        // listen for user taps on the grid and translate x,y coordinates to locaion (row, column) on the grid then place token if conditions are met
 
         if let grid = recognizer.view as? GridImageView {
             if let gridPosition = imageViewGrid?.getGridPositionFromPoint(point: recognizer.location(in: grid)){
-                // gridPosition.1 is the column where user tapped
+                // Attempt to place token at the column user tapped
                 play(at: gridPosition.1)
             }
         }
@@ -84,20 +87,20 @@ class ViewController: UIViewController {
         // Function used to start a *play* and then swap turns
         // column parameter can be any value if player.isBot == true
 
-        if human!.turn && !phone!.turn && column >= 0 && column < gridModel!.columns{
+        if human!.turn && column >= 0 && column < gridModel!.columns{
             human!.turnToPlay(at: column)
+            //Phone's turn to play
             phone!.turn = !(human!.turn)
         }
-        if !human!.turn && phone!.turn {
+        if phone!.turn {
             Timer.scheduledTimer(withTimeInterval: 1.0, repeats: false) {timer in
                 self.phone!.turnToPlay(at: -1)
-                
-                // TODO: Should we wait here for token to finish animation before allowing second player to play?
+                // TODO? at this point the token is still moving down to its position
+                // TODO? CONT'd should we make this blocking?
                 self.human!.turn = !(self.phone!.turn)
                 timer.invalidate()
             }
         }
-
     }
     
     func addTokenToGridModel(at column: Int, for player: inout Player) -> Bool{
@@ -107,7 +110,7 @@ class ViewController: UIViewController {
     }
     
     @IBAction func newGameButtonPressed(_ sender: UIButton) {
-        
+        // If reset stats button is pressed clear out scores
         if sender.tag == 1 {
             human!.reset()
             phone!.reset()
@@ -125,6 +128,7 @@ class ViewController: UIViewController {
 
 extension ViewController: GridDelegate, PlayerDelegate {
     func playerTurnToPlay(at column: Int, player: inout Player) -> Bool {
+        // This function is called from Player when its the specified player's turn to play
         var tokenColumn = column
         if player.isBot {
             tokenColumn = gridModel!.getRandomNonFullColumn()
@@ -138,6 +142,7 @@ extension ViewController: GridDelegate, PlayerDelegate {
     
 
     func playerScoreChanged(player: Player){
+        // This function is called from Player when specified player wins to update their score
         if player.isBot {
             phoneScoreLabel.text = String(player.score)
             phoneScoreLabel.alpha = CGFloat(1.0)
@@ -148,6 +153,7 @@ extension ViewController: GridDelegate, PlayerDelegate {
     }
     
     func valueAddedToGrid(row: Int, column: Int, player: inout Player) {
+        // This function is called from GridController when a player places a token in the grid and notifies the ViewController to update the UI as well
         let tokenView = UIImageView(frame: CGRect(origin: CGPoint(x:0, y:0), size: CGSize(width: CGFloat(0), height: CGFloat(0))))
         tokenView.image = UIImage(named: player.image!)
         self.imageViewGrid!.moveViewTo(row: row, column: column, view: tokenView)
@@ -177,6 +183,7 @@ extension ViewController: GridDelegate, PlayerDelegate {
     }
     
     func gridIsFull(){
+        // This function is called from GridController when grid is full and no pattern was found
         notificationLabel.text = "It's a tie!"
         notificationLabel.alpha = CGFloat(1.0)
     }
