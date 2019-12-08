@@ -147,7 +147,7 @@ extension ViewController: GridDelegate, PlayerDelegate {
         }
     }
     
-    func valueAddedToGrid(row: Int, column: Int, player: inout Player){
+    func valueAddedToGrid(row: Int, column: Int, player: inout Player) {
         let tokenView = UIImageView(frame: CGRect(origin: CGPoint(x:0, y:0), size: CGSize(width: CGFloat(0), height: CGFloat(0))))
         tokenView.image = UIImage(named: player.image!)
         self.imageViewGrid!.moveViewTo(row: row, column: column, view: tokenView)
