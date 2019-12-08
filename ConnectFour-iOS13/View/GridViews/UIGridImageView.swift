@@ -101,6 +101,5 @@ class GridImageView: UIImageView {
             }
             counter += 1
         }
-
     }
 }
