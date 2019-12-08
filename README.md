@@ -12,7 +12,7 @@ This is an iOS Application implemention of the popular Connect Four game.
 3. Repeat steps 1-2 until a pattern is formed.
 4. If no pattern forms and grid is full, "its a tie!" message will appear and no one get a point.
 5. Tap "New Game" to start a new game while maintaining current scores.
-6. Tap "Reset Stats.." to reset the Player's and AI's scores.
+6. Tap "Reset Game & Stats" to reset the Player's and AI's scores.
 
 ### A pattern is formed and a winner is declared if one of the following happens:
 1. Four same colored tokens connect consecutively in the horizontal direction
@@ -34,5 +34,5 @@ This is an iOS Application implemention of the popular Connect Four game.
 6. Token drop-down animation is non-blocking. This means human player can play their turn while the AI's token is still traveling down to its position. Human player cannot overtake AI's token position. Human player cannont play during the one second timeout while waiting for AI to make their move.
 
 ### Optimizations & TODOs
-1. Optimize the way we look for patterns. Current implementaion is O(row*column) time. Can definetly be optimized to O(K) where K = 4 (number of tokens that need to match to declare winner)
+1. Optimize the way we look for patterns. Current implementaion is O(row*column*K) time. Can definetly be optimized to O(K) where K = 4 (number of tokens that need to match to declare winner)
 2. Make animation blocking. Add callbacks to send a notification to ViewController when animation is done to swap players' turns. Current animation implementation does not block player from playing while AI's token is moving down.
