@@ -19,16 +19,17 @@
                                 <rect key="frame" x="0.0" y="44" width="414" height="818"/>
                                 <subviews>
                                     <stackView opaque="NO" contentMode="scaleToFill" axis="vertical" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="V6l-yl-qjn">
-                                        <rect key="frame" x="10" y="0.0" width="394" height="203.5"/>
+                                        <rect key="frame" x="10" y="0.0" width="394" height="241.5"/>
                                         <subviews>
-                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBa-su-Eov" userLabel="EducationLabel">
-                                                <rect key="frame" x="0.0" y="0.0" width="394" height="19.5"/>
+                                            <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" textAlignment="center" lineBreakMode="tailTruncation" numberOfLines="0" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="IBa-su-Eov" userLabel="EducationLabel">
+                                                <rect key="frame" x="0.0" y="0.0" width="394" height="57.5"/>
+                                                <string key="text">Tap column where you want to place Token. Phone will then then place its token 1 second later. Player that connects 4 tokens in a row first wins!</string>
                                                 <fontDescription key="fontDescription" type="system" pointSize="16"/>
                                                 <color key="textColor" white="1" alpha="1" colorSpace="custom" customColorSpace="genericGamma22GrayColorSpace"/>
                                                 <nil key="highlightedColor"/>
                                             </label>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" spacing="20" translatesAutoresizingMaskIntoConstraints="NO" id="sTO-MZ-cBQ" userLabel="PlayersStackView">
-                                                <rect key="frame" x="0.0" y="39.5" width="394" height="40"/>
+                                                <rect key="frame" x="0.0" y="77.5" width="394" height="40"/>
                                                 <subviews>
                                                     <stackView opaque="NO" contentMode="scaleToFill" distribution="fillProportionally" translatesAutoresizingMaskIntoConstraints="NO" id="56y-gJ-CNG" userLabel="yellow">
                                                         <rect key="frame" x="0.0" y="0.0" width="130" height="40"/>
@@ -77,7 +78,7 @@
                                                 </subviews>
                                             </stackView>
                                             <stackView opaque="NO" contentMode="scaleToFill" distribution="fillEqually" translatesAutoresizingMaskIntoConstraints="NO" id="zQ4-hg-iWS" userLabel="ScoresStackView">
-                                                <rect key="frame" x="0.0" y="99.5" width="394" height="48"/>
+                                                <rect key="frame" x="0.0" y="137.5" width="394" height="48"/>
                                                 <subviews>
                                                     <label opaque="NO" userInteractionEnabled="NO" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="0" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="0U8-TH-24o" userLabel="YellowScore">
                                                         <rect key="frame" x="0.0" y="0.0" width="197" height="48"/>
@@ -94,7 +95,7 @@
                                                 </subviews>
                                             </stackView>
                                             <label opaque="NO" userInteractionEnabled="NO" alpha="0.0" contentMode="left" horizontalHuggingPriority="251" verticalHuggingPriority="251" text="Label" textAlignment="center" lineBreakMode="tailTruncation" baselineAdjustment="alignBaselines" adjustsFontSizeToFit="NO" translatesAutoresizingMaskIntoConstraints="NO" id="g0A-Rb-Z8F" userLabel="NotificationStackView">
-                                                <rect key="frame" x="0.0" y="167.5" width="394" height="36"/>
+                                                <rect key="frame" x="0.0" y="205.5" width="394" height="36"/>
                                                 <fontDescription key="fontDescription" type="system" pointSize="30"/>
                                                 <color key="textColor" red="0.0" green="0.98106676339999999" blue="0.57369142770000003" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                                 <nil key="highlightedColor"/>
@@ -102,7 +103,7 @@
                                         </subviews>
                                     </stackView>
                                     <view contentMode="scaleAspectFit" translatesAutoresizingMaskIntoConstraints="NO" id="mck-7s-RXm">
-                                        <rect key="frame" x="34.5" y="326.5" width="345" height="300"/>
+                                        <rect key="frame" x="34.5" y="345.5" width="345" height="300"/>
                                         <color key="backgroundColor" red="0.0" green="0.43222525092465752" blue="1" alpha="1" colorSpace="custom" customColorSpace="sRGB"/>
                                         <constraints>
                                             <constraint firstAttribute="width" constant="345" id="Zyy-so-edc"/>
